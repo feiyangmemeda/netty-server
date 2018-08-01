@@ -24,7 +24,7 @@ public class Server {
     }
 
     @Autowired
-    private ShushiServerHandler echoServerHandler;
+    private ShushiServerHandler shushiServerHandler;
 
     public void run() throws Exception {
         // 调度线程，一般和cpu核心数相当
@@ -41,7 +41,7 @@ public class Server {
                             /*.addLast(new LineBasedFrameDecoder(1024))
                             .addLast(new StringDecoder())*/
                             // 业务处理的handler
-                            .addLast(echoServerHandler);
+                            .addLast(shushiServerHandler);
             /*
                 第一个设置为工作线程满了后，后续请求放入队列，队列长度为128
                 第二个设置为心跳
