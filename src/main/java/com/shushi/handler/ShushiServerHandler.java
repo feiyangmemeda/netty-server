@@ -3,6 +3,7 @@ package com.shushi.handler;
 import com.shushi.action.UserAction;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ import javax.annotation.Resource;
  * @date 2018/7/30
  */
 @Component
+@ChannelHandler.Sharable
 public class ShushiServerHandler extends ChannelInboundHandlerAdapter {
 
     @Resource
