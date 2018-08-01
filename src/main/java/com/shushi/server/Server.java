@@ -29,6 +29,7 @@ public class Server {
     public void run() throws Exception {
         // 调度线程，一般和cpu核心数相当
         NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
+        // 工作线程
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {
@@ -41,6 +42,10 @@ public class Server {
                             .addLast(new StringDecoder())*/
                             // 业务处理的handler
                             .addLast(echoServerHandler);
+            /*
+                第一个设置为工作线程满了后，后续请求放入队列，队列长度为128
+                第二个设置为心跳
+             */
                 }
                 /*
                    第一个option设置是如果处理线程(workerGroup)全满，则将请求放入队列，队列最大长度为128
